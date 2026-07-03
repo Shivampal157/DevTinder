@@ -17,9 +17,21 @@
 - Push all code to remote origin
 - Play with routes and route extensions (e.g. `/hello`, `/`, `/hello/2`, `/xyz`)
 - Order of the routes matters a lot
-- Install Postman — workspace/collection and test API calls
-- Handle GET, POST, PATCH, DELETE and test in Postman
-- Explore routing: `?`, `+`, `()`, `*` in routes
+- Install Postman app — create a workspace/collection and test API calls
+- Write logic to handle GET, POST, PATCH, DELETE API calls and test them in Postman
+- Explore routing and use of `?`, `+`, `()`, `*` in routes
+- Use of regex in routes (e.g. `/a/`, `/.*fly$/`)
+- Reading the query params in the routes
+- Reading the dynamic routes
+- Multiple route handlers — play with the code
+- `next()`
+- `next` function and errors along with `res.send()`
+- `app.use("/route", rH, [rH2, rH3], rH4, rH5);`
+- What is a middleware? Why do we need it?
+- How Express.js basically handles requests behind the scenes
+- Difference between `app.use` and `app.all`
+- Write a dummy auth middleware for admin
+- Write a dummy auth middleware for all user routes, except `/user/login`
 
 ---
 
