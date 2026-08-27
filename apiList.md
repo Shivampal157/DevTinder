@@ -1,26 +1,31 @@
-# DevTinder APIS
+# DevTinder APIs
 
+Base URL: `http://localhost:7777`
 
-authRouter
--POST /signup
--POST /login
--POST /logout
+Auth cookie: `token` (httpOnly)
 
-profileRouter
--GET /profile/view
--PATCH /profile/edit
--PATCH /profile/password
+## authRouter
+- POST /signup
+- POST /login
+- POST /logout
 
-connectionRequestRouter
-- POST /request/send/:status/:userId
+## profileRouter
+- GET /profile/view
+- PATCH /profile/edit
+- PATCH /profile/password
 
-- POST /request/review/accepted/:requestId
-- POST /request/review/rejected/:requestId
+## connectionRequestRouter
+- POST /request/send/:status/:toUserId
+- POST /request/review/:status/:requestId
 
-
-userRouter
+## userRouter
 - GET /user/connections
+- GET /user/requests
 - GET /user/requests/received
-- GET /user/feed - Gets you the profiles of other users on plateform
+- GET /user/feed
+- GET /feed
 
-Status ignore, interested, accepted, rejected
+Status values: `ignored`, `interested`, `accepted`, `rejected`
+
+Send request status: `interested` | `ignored` (alias: `ignore`)
+Review request status: `accepted` | `rejected`
