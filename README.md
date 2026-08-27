@@ -1,54 +1,119 @@
 # DevTinder
 
-Tinder for developers — connect with people who share your stack.
+Maine yeh full stack project banaya hai. Developers ek dusre ko discover kar sakte hain, connection request bhej sakte hain, aur match ke baad connections dekh sakte hain.
 
-This project follows the [Namaste Node.js DevTinder backend](https://github.com/akshaymarch7/devTinder) APIs and a frontend inspired by [devloper-tinder.vercel.app](https://devloper-tinder.vercel.app/).
+Poora flow maine khud handle kiya hai — signup se lekar feed, requests aur profile tak.
 
-## Features
+Live nahi hai abhi. Local pe chalani hai.
 
-- Auth: signup, login, logout (httpOnly JWT cookie)
-- Profile view / edit / password update
-- Feed of other developers
-- Send interested / ignored requests
-- Accept or reject incoming requests
+## Tech stack
+
+**Backend**
+- Node.js
+- Express
+- MongoDB + Mongoose
+- JWT (httpOnly cookie)
+- bcrypt
+- CORS + dotenv
+
+**Frontend**
+- React
+- Vite
+- Redux Toolkit
+- React Router
+- Axios
+- Tailwind CSS + DaisyUI
+
+## Kya-kya kaam karta hai
+
+- Account create / login / logout
+- Profile dekhna, edit karna, password change
+- Dusre developers ka feed
+- Interested ya Ignore bhejna
+- Aayi hui requests Accept / Reject
 - Connections list
+- Landing page + auth pages
+
+Password strong hona chahiye (8+ characters, upper, lower, number, symbol).
+
+## Project structure
+
+```
+DevTinder/
+  src/          backend (routes, models, middleware)
+  web/          frontend (React app)
+  .env.example  env keys ka format
+  apiList.md    saari APIs
+```
+
+`.env` git pe nahi jaati. Apna khud banana.
 
 ## Setup
 
-1. Copy env file and fill your MongoDB + JWT values:
+### 1. Env
 
-```bash
+```
 copy .env.example .env
 ```
 
-2. Install and run backend:
+`.env` me yeh daalo:
 
-```bash
+```
+JWT_SECRET=koi_secret
+DATABASE_URL=mongodb://127.0.0.1:27018/devTinder
+PORT=7777
+CLIENT_URL=http://localhost:5173
+```
+
+MongoDB chalni chahiye. Atlas use kar rahe ho to apna connection string daal dena, aur IP allow karna.
+
+### 2. Backend
+
+```
 npm install
 npm run dev
 ```
 
-Backend runs on `http://localhost:7777`.
+API: `http://localhost:7777`
 
-3. Install and run frontend:
+### 3. Frontend
 
-```bash
+```
 cd web
 npm install
 npm run dev
 ```
 
-Frontend runs on `http://localhost:5173`.
+UI: `http://localhost:5173`
 
-## API list
+Agar 5173 busy ho to Vite 5174 pe khol deta hai.
 
-See `apiList.md`.
+## APIs
 
-Password must be strong: min 8 characters, uppercase, lowercase, number, and symbol.
+Main endpoints:
 
-If the backend fails with an Atlas IP error, open MongoDB Atlas \u2192 Network Access \u2192 Add your current IP (or `0.0.0.0/0` for local learning).
+```
+POST   /signup
+POST   /login
+POST   /logout
 
-## Project structure
+GET    /profile/view
+PATCH  /profile/edit
+PATCH  /profile/password
 
-- `src/` — Express + MongoDB API
-- `web/` — React + Vite + Tailwind + DaisyUI app
+POST   /request/send/:status/:toUserId
+POST   /request/review/:status/:requestId
+
+GET    /feed
+GET    /user/feed
+GET    /user/requests
+GET    /user/connections
+```
+
+Status: `interested`, `ignored`, `accepted`, `rejected`
+
+Poori list `apiList.md` me hai.
+
+---
+
+**Shivam Pal**
