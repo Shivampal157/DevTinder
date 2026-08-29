@@ -1,10 +1,10 @@
 # DevTinder
 
-Maine yeh full stack project banaya hai. Developers ek dusre ko discover kar sakte hain, connection request bhej sakte hain, aur match ke baad connections dekh sakte hain.
+This is a full stack project I built for developers to find other developers.
 
-Poora flow maine khud handle kiya hai — signup se lekar feed, requests aur profile tak.
+You can create an account, set up your profile, browse people on the feed, send interested or ignore, accept or reject incoming requests, and see your connections.
 
-Live nahi hai abhi. Local pe chalani hai.
+Everything from auth to feed to profile is implemented in this repo.
 
 ## Tech stack
 
@@ -24,17 +24,17 @@ Live nahi hai abhi. Local pe chalani hai.
 - Axios
 - Tailwind CSS + DaisyUI
 
-## Kya-kya kaam karta hai
+## Features
 
-- Account create / login / logout
-- Profile dekhna, edit karna, password change
-- Dusre developers ka feed
-- Interested ya Ignore bhejna
-- Aayi hui requests Accept / Reject
+- Signup, login, logout
+- View, edit, and update profile password
+- Feed of other developers
+- Send interested / ignore
+- Accept or reject requests
 - Connections list
-- Landing page + auth pages
+- Landing page and auth screens
 
-Password strong hona chahiye (8+ characters, upper, lower, number, symbol).
+Passwords must be strong: at least 8 characters, with uppercase, lowercase, a number, and a symbol.
 
 ## Project structure
 
@@ -42,30 +42,30 @@ Password strong hona chahiye (8+ characters, upper, lower, number, symbol).
 DevTinder/
   src/          backend (routes, models, middleware)
   web/          frontend (React app)
-  .env.example  env keys ka format
-  apiList.md    saari APIs
+  .env.example  environment variable template
+  apiList.md    API list
 ```
 
-`.env` git pe nahi jaati. Apna khud banana.
+`.env` is not committed. Create your own file locally.
 
 ## Setup
 
-### 1. Env
+### 1. Environment
 
 ```
 copy .env.example .env
 ```
 
-`.env` me yeh daalo:
+Add these values in `.env`:
 
 ```
-JWT_SECRET=koi_secret
+JWT_SECRET=your_secret
 DATABASE_URL=mongodb://127.0.0.1:27018/devTinder
 PORT=7777
 CLIENT_URL=http://localhost:5173
 ```
 
-MongoDB chalni chahiye. Atlas use kar rahe ho to apna connection string daal dena, aur IP allow karna.
+MongoDB must be running. If you use Atlas, put your connection string in `DATABASE_URL` and allow your IP.
 
 ### 2. Backend
 
@@ -86,11 +86,9 @@ npm run dev
 
 UI: `http://localhost:5173`
 
-Agar 5173 busy ho to Vite 5174 pe khol deta hai.
+If port 5173 is already in use, Vite will start on 5174.
 
 ## APIs
-
-Main endpoints:
 
 ```
 POST   /signup
@@ -110,9 +108,9 @@ GET    /user/requests
 GET    /user/connections
 ```
 
-Status: `interested`, `ignored`, `accepted`, `rejected`
+Status values: `interested`, `ignored`, `accepted`, `rejected`
 
-Poori list `apiList.md` me hai.
+Full list is in `apiList.md`.
 
 ---
 
